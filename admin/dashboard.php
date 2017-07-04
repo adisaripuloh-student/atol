@@ -16,9 +16,9 @@
     <?php
       include '../navbar.php';
     ?>
-    <div class="container content-login">
+    <div class="container content">
       <div class="row">
-        <?php echo $login_session; ?>
+        <?php include ('halaman/daftar_pesanan.php'); ?>
       </div>
     </div>
     <hr class="devider">

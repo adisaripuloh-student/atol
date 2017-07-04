@@ -31,7 +31,7 @@
           </ul>
         <?php } else { ?>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/admin">Login</a></li>
+            <li><a href="/admin">Masuk</a></li>
           </ul>
         <?php } ?>
       </div><!-- /.navbar-collapse -->
