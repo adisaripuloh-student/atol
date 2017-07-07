@@ -1,5 +1,12 @@
 <?php
 session_start();
+if(isset($_GET['id'])) {
+  require_once ('db.php');
+  $id = $_GET['id'];
+  $sql = "SELECT * FROM pesanan WHERE id='$id'";
+  $result = mysqli_query($db,$sql);
+  $row = $result->fetch_assoc();
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,16 +37,28 @@ include 'navbar.php';
             <h3 class="panel-title text-center">Konfirmasi Sekarang</h3>
           </div>
           <div class="panel-body">
-            <form class="form-horizontal" method="post" action="/admin/proses/konfirmasi.php">
+            <form class="form-horizontal" method="post" action="/admin/proses/konfirmasi.php" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="id_pesanan" class="col-sm-4 control-label">ID Pesanan</label>
                 <div class="col-sm-8">
                   <?php if (isset($_GET['id'])) {
                     $id = $_GET['id'];
                   ?>
-                    <input type="text" class="form-control" name="id_pesanan" value="<?php echo $id; ?>" readonly="readonly">
+                    <input type="text" class="form-control" name="id_pesanan" value="<?php echo $row['id'] ?>" readonly="readonly">
                   <?php } else { ?>
-                    <input type="text" class="form-control" name="id_pesanan">
+                    <input type="text" class="form-control" name="id_pesanan" placeholder="ID Pesanan">
+                  <?php } ?>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="no_kontak" class="col-sm-4 control-label">Kontak</label>
+                <div class="col-sm-8">
+                  <?php if (isset($_GET['id'])) {
+                    $id = $_GET['id'];
+                  ?>
+                    <input type="text" class="form-control" name="no_kontak" value="<?php echo $row['kontak'] ?>" readonly="readonly">
+                  <?php } else { ?>
+                    <input type="text" class="form-control" name="no_kontak" placeholder="0800 0000 0000">
                   <?php } ?>
                 </div>
               </div>

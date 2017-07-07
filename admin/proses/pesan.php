@@ -1,4 +1,5 @@
-<?php
+
+    $tgl_berangkat = $_POST['tgl_berangkat']<?php
   if(isset($_POST['pesan'])) {
     require_once ('../../db.php');
 

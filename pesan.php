@@ -8,7 +8,7 @@
         <div class="form-group">
           <label for="dari" class="col-sm-4 control-label">Dari</label>
           <div class="col-sm-8">
-            <select class="form-control" name="dari">
+            <select class="form-control" name="dari" id="dari">
               <option value="Bandung">Bandung</option>
               <option value="Jatinangor">Jatinangor</option>
             </select>
@@ -17,13 +17,13 @@
         <div class="form-group">
           <label for="tgl_berangkat" class="col-sm-4 control-label">Tanggal Berangkat</label>
           <div class="col-sm-8">
-            <input type="Date" class="form-control" name="tgl_berangkat">
+            <input type="Date" class="form-control" name="tgl_berangkat" id="tgl_berangkat">
           </div>
         </div>
         <div class="form-group">
           <label for="jam_berangkat" class="col-sm-4 control-label">Jam Berangkat</label>
           <div class="col-sm-8">
-            <select class="form-control" name="jam_berangkat">
+            <select class="form-control" name="jam_berangkat" id="jam_berangkat">
               <?php
               $j = 6;
               for ($i=0; $i<=12; $i++) {
@@ -42,7 +42,7 @@
         <div class="form-group">
           <label for="kursi" class="col-sm-4 control-label">Posisi Kursi</label>
           <div class="col-sm-8">
-            <select class="form-control" name="kursi">
+            <select class="form-control" name="kursi" id="kursi">
               <?php
               for ($i=1; $i<=13; $i++) {
                 echo '<option value="'.$i.'">'.$i.'</option>';
@@ -53,7 +53,8 @@
         </div>
         <div class="form-group">
           <div class="col-sm-offset-4 col-sm-8">
-            <button type="button" onclick="next()" class="btn btn-primary pull-right">Cek Ketersediaan</button>
+            <span>* Tarif Rp. 20.000</span>
+            <button type="button" class="btn btn-primary pull-right" id="btn_next">Cek Ketersediaan</button>
           </div>
         </div>
       </div>
@@ -67,7 +68,7 @@
         <div class="form-group">
           <label for="kontak" class="col-sm-4 control-label">Kontak</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="kontak" placeholder="0801 0000 0000">
+            <input type="text" class="form-control" name="kontak" placeholder="0800 0000 0000">
           </div>
         </div>
         <div class="form-group">

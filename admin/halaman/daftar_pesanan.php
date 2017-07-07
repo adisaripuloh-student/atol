@@ -1,6 +1,6 @@
 <h3 class="text-center">Daftar Pesanan</h3>
 <hr>
-<table class="table table-striped text-center">
+<table class="table table-striped table-bordered text-center table-responsive" id="table">
   <thead>
     <td>ID</td>
     <td>Nama Pemesan</td>
@@ -10,7 +10,8 @@
     <td>No. Kursi</td>
     <td>Kontak</td>
     <td>Pembayaran</td>
-    <td>Foto Konfirmasi</td>
+    <td>Konfirmasi</td>
+    <td></td>
   </thead>
   <tbody>
   <?php
@@ -32,22 +33,39 @@
       $pembayaran = $row['pembayaran'];
       $foto_konfirmasi = $row['foto_konfirmasi'];
 
+      $j = 6;
+      for($i=1; $i<=12; $i++) {
+        if(($jam_berangkat == $i)) {
+          if($j <= 9) {
+            $new_jadwal = '0' . $j . '.00';
+          } else {
+            $new_jadwal = $j . '.00';
+          }
+        }
+        $j++;
+      }
+
       echo '
       <tr>
         <td>'.$id.'</td>
         <td>'.$nama_pemesan.'</td>
         <td>'.$dari.'</td>
         <td>'.$ke.'</td>
-        <td>'.$tgl_berangkat.' '.($jam_berangkat).'</td>
+        <td>'.$tgl_berangkat.' '.$new_jadwal.'</td>
         <td>'.$no_kursi.'</td>
         <td>'.$kontak.'</td>
         <td>'.$pembayaran.'</td>
-        <td><a href="/images/foto_konfirmasi/'.$foto_konfirmasi.'">Lihat</a></td>
+        <td>'.$foto_konfirmasi.'</td>
+        <td>
+          <div class="btn-group" role="group">
+            <a href="#"><button type="button" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-eye-open"></i></button></a>
+            <a href="#"><button type="button" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i></i></button></a>
+          </div>
+        </td>
       </tr>
       ';
     }
   }
-  $conn->close();
   ?>
   </tbody>
 </table>

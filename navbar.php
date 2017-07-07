@@ -16,7 +16,10 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><a href="/jadwal_pemberangkatan.php">Jadwal Pemberangkatan</a></li>
+          <?php if(isset($_SESSION['username']) != "admin"){ ?>
+          <li><a href="/konfirmasi.php">Konfirmasi Pesanan</a></li>
           <li><a href="/kontak.php">Hubungi Kami</a></li>
+          <?php } ?>
         </ul>
         <?php if(isset($_SESSION['username']) != ""){ ?>
           <ul class="nav navbar-nav navbar-right">
@@ -31,7 +34,7 @@
           </ul>
         <?php } else { ?>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/admin">Masuk</a></li>
+            <li><a href="/admin">Login Admin</a></li>
           </ul>
         <?php } ?>
       </div><!-- /.navbar-collapse -->
