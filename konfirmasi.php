@@ -51,6 +51,18 @@ include 'navbar.php';
                 </div>
               </div>
               <div class="form-group">
+                <label for="no_kontak" class="col-sm-4 control-label">Nama</label>
+                <div class="col-sm-8">
+                  <?php if (isset($_GET['id'])) {
+                    $id = $_GET['id'];
+                  ?>
+                    <input type="text" class="form-control" name="nama" value="<?php echo $row['nama_pemesan'] ?>" readonly="readonly">
+                  <?php } else { ?>
+                    <input type="text" class="form-control" name="nama" placeholder="Nama">
+                  <?php } ?>
+                </div>
+              </div>
+              <div class="form-group">
                 <label for="no_kontak" class="col-sm-4 control-label">Kontak</label>
                 <div class="col-sm-8">
                   <?php if (isset($_GET['id'])) {
