@@ -24,6 +24,15 @@
           <h1>ATOL TRAVEL</h1>
           <p class="lead">Kenyamanan Anda merupakan kepuasan bagi kami.</p>
         </div>
+          <?php
+            if($_GET['msg']) {
+              echo '
+                <div class="alert alert-success alert-dismissible col-md-10 col-md-offset-1 text-center" role="alert">
+                    Silahkan cek email untuk konfirmasi pesanan dan pembayaran.
+                  </div>
+              ';
+            }
+          ?>
           <div class="col-md-6 col-xs-12">
             <?php include 'pesan.php'; ?>
           </div>

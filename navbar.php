@@ -17,7 +17,6 @@
         <ul class="nav navbar-nav">
           <li><a href="/jadwal_pemberangkatan.php">Jadwal Pemberangkatan</a></li>
           <?php if(isset($_SESSION['username']) != "admin"){ ?>
-          <li><a href="/konfirmasi.php">Konfirmasi Pesanan</a></li>
           <li><a href="/kontak.php">Hubungi Kami</a></li>
           <?php } ?>
         </ul>

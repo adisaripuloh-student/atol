@@ -1,11 +1,14 @@
 <?php
 session_start();
-if(isset($_GET['id'])) {
+if(isset($_GET['key'])) {
   require_once ('db.php');
-  $id = $_GET['id'];
-  $sql = "SELECT * FROM pesanan WHERE id='$id'";
+  $key = $_GET['key'];
+  $sql = "SELECT * FROM pesanan WHERE key_konfirmasi='$key'";
   $result = mysqli_query($db,$sql);
   $row = $result->fetch_assoc();
+  if($key != $row['key_konfirmasi']) {
+    header('location: /');
+  }
 }
 ?>
 
@@ -32,62 +35,80 @@ include 'navbar.php';
         <p class="lead">Kenyamanan Anda merupakan kepuasan bagi kami.</p>
       </div>
       <div class="col-md-6 col-xs-12">
+      <?php if(isset($key)) {
+        $key = $_GET['key'];
+      ?>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title text-center">Konfirmasi Sekarang</h3>
+            <h3 class="panel-title text-center">Konfirmasi Pembayaran</h3>
           </div>
           <div class="panel-body">
-            <form class="form-horizontal" method="post" action="/admin/proses/konfirmasi.php" enctype="multipart/form-data">
-              <div class="form-group">
-                <label for="id_pesanan" class="col-sm-4 control-label">ID Pesanan</label>
-                <div class="col-sm-8">
-                  <?php if (isset($_GET['id'])) {
-                    $id = $_GET['id'];
-                  ?>
-                    <input type="text" class="form-control" name="id_pesanan" value="<?php echo $row['id'] ?>" readonly="readonly">
-                  <?php } else { ?>
-                    <input type="text" class="form-control" name="id_pesanan" placeholder="ID Pesanan">
+            <!-- Pesan -->
+            <?php
+              $kode = $row['pembayaran'];
+              if($kode != 2) {
+                if($kode == 0) {
+                  echo '
+                    <div class="alert alert-warning alert-dismissible col-md-10 col-md-offset-1 text-center" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      Anda belum melakukan konfirmasi pembayaran.<br>Silahkan konfirmasi pembayaran dengan meng-upload bukti pembayaran.
+                    </div>
+                  ';
+                }
+                if ($kode == 1) {
+                  echo '
+                    <div class="alert alert-warning alert-dismissible col-md-10 col-md-offset-1 text-center" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      Menunggu konfirmasi dari Admin.
+                    </div>
+                  ';
+                }
+            ?>
+                <form class="form-horizontal" method="post" action="/admin/proses/konfirmasi.php" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="id_pesanan" class="col-sm-4 control-label">ID Pesanan</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="id_pesanan" value="<?php echo $row['id'] ?>" readonly="readonly">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="nama" class="col-sm-4 control-label">Nama</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="nama" value="<?php echo $row['nama_pemesan'] ?>" readonly="readonly">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="no_kontak" class="col-sm-4 control-label">E-mail</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="no_kontak" value="<?php echo $row['kontak'] ?>" readonly="readonly">
+                    </div>
+                  </div>
+                  <?php if ($kode == 0) { ?>
+                  <div class="form-group">
+                    <label for="bukti" class="col-sm-4 control-label">Bukti Transfer</label>
+                    <div class="col-sm-8">
+                      <input type="file" class="form-control" name="bukti">
+                    </div>
+                  </div>
                   <?php } ?>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="no_kontak" class="col-sm-4 control-label">Nama</label>
-                <div class="col-sm-8">
-                  <?php if (isset($_GET['id'])) {
-                    $id = $_GET['id'];
-                  ?>
-                    <input type="text" class="form-control" name="nama" value="<?php echo $row['nama_pemesan'] ?>" readonly="readonly">
-                  <?php } else { ?>
-                    <input type="text" class="form-control" name="nama" placeholder="Nama">
-                  <?php } ?>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="no_kontak" class="col-sm-4 control-label">Kontak</label>
-                <div class="col-sm-8">
-                  <?php if (isset($_GET['id'])) {
-                    $id = $_GET['id'];
-                  ?>
-                    <input type="text" class="form-control" name="no_kontak" value="<?php echo $row['kontak'] ?>" readonly="readonly">
-                  <?php } else { ?>
-                    <input type="text" class="form-control" name="no_kontak" placeholder="0800 0000 0000">
-                  <?php } ?>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="bukti" class="col-sm-4 control-label">Bukti Transfer</label>
-                <div class="col-sm-8">
-                  <input type="file" class="form-control" name="bukti">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-10 col-md-offset-2">
-                  <button type="submit" class="btn btn-primary pull-right" name="konfirmasi">Konfirmasi</button>
-                </div>
-              </div>
+                  <?php if ($kode == 0) { ?>
+                  <div class="form-group">
+                    <div class="col-sm-10 col-md-offset-2">
+                      <button type="submit" class="btn btn-primary pull-right" name="konfirmasi">Konfirmasi</button>
+                    </div>
+                  </div>
+                  <?php } 
+                } else {
+                  echo '
+                    <div class="alert alert-success alert-dismissible col-md-10 col-md-offset-1 text-center" role="alert">
+                      Pembayaran telah di konfirmasi.<br>Cek email Anda untuk cetak nota.
+                    </div>
+                  ';
+                  }?>
             </form>
           </div>
         </div>
+        <?php } else { header('location: /'); } ?>
       </div>
       <div class="col-md-6 col-xs-12">
         <?php include 'tentang.php'; ?>
