@@ -10,7 +10,6 @@
     <td>No. Kursi</td>
     <td>Kontak</td>
     <td>Pembayaran</td>
-    <td>Konfirmasi</td>
     <td></td>
   </thead>
   <tbody>
@@ -30,8 +29,7 @@
       $no_kursi = $row['no_kursi'];
       $kontak = $row['kontak'];
       $pembayaran = $row['pembayaran'];
-      $pembayaran = $row['pembayaran'];
-      $foto_konfirmasi = $row['foto_konfirmasi'];
+      $key = $row['key_konfirmasi'];
 
       $j = 6;
       for($i=1; $i<=12; $i++) {
@@ -45,6 +43,24 @@
         $j++;
       }
 
+      if($pembayaran == 0) {
+        $new_pembayaran = '
+          <span class="label label-default">Belum di Konfirmasi</span>
+        ';
+      }
+
+      if($pembayaran == 1) {
+        $new_pembayaran = '
+          <span class="label label-warning">Menunggu Konfirmasi</span>
+        ';
+      }
+
+      if($pembayaran == 2) {
+        $new_pembayaran = '
+          <span class="label label-success">Pembayaran Selesai</span>
+        ';
+      }
+
       echo '
       <tr>
         <td>'.$id.'</td>
@@ -53,12 +69,11 @@
         <td>'.$ke.'</td>
         <td>'.$tgl_berangkat.' '.$new_jadwal.'</td>
         <td>'.$no_kursi.'</td>
-        <td>'.$kontak.'</td>
-        <td>'.$pembayaran.'</td>
-        <td>'.$foto_konfirmasi.'</td>
+        <td><a href="mailto:'.$kontak.'">'.$kontak.'</a></td>
+        <td>'.$new_pembayaran.'</td>
         <td>
           <div class="btn-group" role="group">
-            <a href="#"><button type="button" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-eye-open"></i></button></a>
+            <a href="?act=lihat&key='.$key.'"><button type="button" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-eye-open"></i></button></a>
             <a href="#"><button type="button" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i></i></button></a>
           </div>
         </td>

@@ -68,7 +68,7 @@
         <div class="form-group">
           <label for="kontak" class="col-sm-4 control-label">Email</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="kontak" placeholder="email@mail.com">
+            <input type="email" class="form-control" name="kontak" placeholder="email@mail.com">
           </div>
         </div>
         <div class="form-group">

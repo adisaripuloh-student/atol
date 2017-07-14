@@ -21,7 +21,8 @@
         <div class="col-md-8 col-md-offset-2">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <center><h2>Jadwal Pemberangkatan</h2></center>
+              <h2 class="text-center">Jadwal Pemberangkatan</h2>
+              <p class="text-center"><small>Setiap hari buka.</small></p>
             </div>
             <div class="panel-body">
               <div class="table-responsive" style="text-align: center;">

@@ -1,11 +1,39 @@
 <?php
-  if(isset($_POST['konfirmasi'])) {
-    $id = $_POST['id_pesanan'];
-    $kontak = $_POST['no_kontak'];
+	if(isset($_POST['konfirmasi'])){
+		require_once ('../../db.php');
 
-    $dir = '../../images/konfirmasi/';
-    $file = $dir . basename($_FILES["bukti"]["name"]);
+	  $errors= array();
+	  $dir = '../../images/konfirmasi/';
+	  $file_name = $_FILES['bukti']['name'];
+	  $file_size =$_FILES['bukti']['size'];
+	  $file_tmp =$_FILES['bukti']['tmp_name'];
+	  $file_type=$_FILES['bukti']['type'];
+	  $file_ext=strtolower(end(explode('.',$_FILES['bukti']['name'])));
+	  
+	  $expensions= array("jpeg","jpg","png");
+	  
+	  if(in_array($file_ext,$expensions)=== false){
+	     $errors[]="Tipe file file yang diperbolehkan hanya JPEG dan PNG.";
+	  }
+	  
+	  if($file_size > 5120000){
+	     $errors[]='Maksimal ukuran file 5 MB';
+	  }
+	  
+	  if(empty($errors)==true){
+	  	$id = $_POST['id_pesanan'];
+  	  $sql = "SELECT * FROM pesanan WHERE id='$id'";
+ 			$result = mysqli_query($db,$sql);
+ 			$row = $result->fetch_assoc();
 
-    $imageFileType = pathinfo($file,PATHINFO_EXTENSION);
-  }
+ 			$key_konfirmasi = $row['key_konfirmasi'];
+	  	$new_file_name = $key_konfirmasi.".".$file_ext;
+	  	$sql_update = "UPDATE pesanan SET pembayaran=1, foto_konfirmasi='$new_file_name' WHERE key_konfirmasi='$key_konfirmasi'";
+	  	$db->query($sql_update);
+			move_uploaded_file($file_tmp,$dir."".$new_file_name);
+			echo "Success";
+	  }else{
+			print_r($errors);
+	  }
+	}
 ?>

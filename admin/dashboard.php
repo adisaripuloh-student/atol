@@ -19,7 +19,22 @@
     ?>
     <div class="container content">
       <div class="row">
-        <?php include ('halaman/daftar_pesanan.php'); ?>
+        <?php
+          $act = $_GET['act'];
+          if (isset($act)) {
+            if(($act == 'lihat') && !empty($_GET['key'])) {
+              $key = $_GET['key'];
+              include ('halaman/lihat.php');
+            } elseif(($act == 'edit') && !empty($_GET['key'])) {
+                $key = $_GET['key'];
+                include ('halaman/edit.php');
+            } else {
+              header('location: dashboard.php');
+            }
+          } else {
+            include ('halaman/daftar_pesanan.php');
+          }
+        ?>
       </div>
     </div>
     <hr class="devider">

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_GET['key'])) {
+if(isset($_GET['key']) AND !empty($_GET['key'])) {
   require_once ('db.php');
   $key = $_GET['key'];
   $sql = "SELECT * FROM pesanan WHERE key_konfirmasi='$key'";
@@ -59,7 +59,8 @@ include 'navbar.php';
                   echo '
                     <div class="alert alert-warning alert-dismissible col-md-10 col-md-offset-1 text-center" role="alert">
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      Menunggu konfirmasi dari Admin.
+                      Menunggu konfirmasi dari Admin.<br>Jika 15 menit sebelum keberangkatan belum di konfirmasi silahkan hubungi kontak yang telah di sediakan.
+                      <br><br><a href="/" class="text-center">Beranda</a>
                     </div>
                   ';
                 }
@@ -85,7 +86,7 @@ include 'navbar.php';
                   </div>
                   <?php if ($kode == 0) { ?>
                   <div class="form-group">
-                    <label for="bukti" class="col-sm-4 control-label">Bukti Transfer</label>
+                    <label for="bukti" class="col-sm-4 control-label">bukti Transfer</label>
                     <div class="col-sm-8">
                       <input type="file" class="form-control" name="bukti">
                     </div>
@@ -102,6 +103,7 @@ include 'navbar.php';
                   echo '
                     <div class="alert alert-success alert-dismissible col-md-10 col-md-offset-1 text-center" role="alert">
                       Pembayaran telah di konfirmasi.<br>Cek email Anda untuk cetak nota.
+                      <br><br><a href="/" class="text-center">Beranda</a>
                     </div>
                   ';
                   }?>

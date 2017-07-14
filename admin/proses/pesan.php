@@ -152,7 +152,7 @@
             <td><b>Email</b><td>: ".$kontak."</td></td>
           </tr>
           <tr>
-            <td><b>Jadwal Pemberangkatan</b><td>: <b>".$tgl_berangkat." (".$new_jadwal.")</b></td></td>
+            <td><b>Jadwal Pemberangkatan</b><td>: <b>".$tgl_berangkat." ".$new_jadwal."</b></td></td>
           </tr>
           <tr>
             <td><b>No. Kursi</b><td>: <b>".$kursi."</b></td></td>
