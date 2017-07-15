@@ -64,6 +64,14 @@ include 'navbar.php';
                     </div>
                   ';
                 }
+                if (isset($_GET['msg']) == 'error') {
+                  echo '
+                    <div class="alert alert-danger alert-dismissible col-md-10 col-md-offset-1 text-center" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      File yang Anda masukkan salah.
+                    </div>
+                  ';
+                }
             ?>
                 <form class="form-horizontal" method="post" action="/admin/proses/konfirmasi.php" enctype="multipart/form-data">
                   <div class="form-group">
@@ -86,9 +94,9 @@ include 'navbar.php';
                   </div>
                   <?php if ($kode == 0) { ?>
                   <div class="form-group">
-                    <label for="bukti" class="col-sm-4 control-label">bukti Transfer</label>
+                    <label for="bukti" class="col-sm-4 control-label">Bukti Transfer</label>
                     <div class="col-sm-8">
-                      <input type="file" class="form-control" name="bukti">
+                      <input type="file" class="form-control" name="bukti" required="required">
                     </div>
                   </div>
                   <?php } ?>

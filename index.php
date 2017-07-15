@@ -28,8 +28,8 @@
             if(isset($_GET['msg'])) {
               echo '
                 <div class="alert alert-success alert-dismissible col-md-10 col-md-offset-1 text-center" role="alert">
-                    Silahkan cek email untuk konfirmasi pesanan dan pembayaran.
-                  </div>
+                    Silahkan cek email untuk melakukan pembayaran.<br><small>*cek folder spam jika tidak menemukan email di kotak masuk.
+                </div>
               ';
             }
           ?>

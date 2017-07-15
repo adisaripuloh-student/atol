@@ -17,7 +17,7 @@
         <div class="form-group">
           <label for="tgl_berangkat" class="col-sm-4 control-label">Tanggal Berangkat</label>
           <div class="col-sm-8">
-            <input type="Date" class="form-control" name="tgl_berangkat" id="tgl_berangkat">
+            <input type="Date" class="form-control" name="tgl_berangkat" id="tgl_berangkat" min="<?php echo date('Y-m-d'); ?>" value="<?php echo date('Y-m-d'); ?>">
           </div>
         </div>
         <div class="form-group">
@@ -62,19 +62,19 @@
         <div class="form-group">
           <label for="nama" class="col-sm-4 control-label">Nama</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="nama" placeholder="Nama">
+            <input type="text" class="form-control" name="nama" placeholder="Nama" required="required">
           </div>
         </div>
         <div class="form-group">
           <label for="kontak" class="col-sm-4 control-label">Email</label>
           <div class="col-sm-8">
-            <input type="email" class="form-control" name="kontak" placeholder="email@mail.com">
+            <input type="email" class="form-control" name="kontak" placeholder="email@mail.com" required="required">
           </div>
         </div>
         <div class="form-group">
           <div class="col-sm-8 col-md-offset-4">
             <button type="button" class="btn btn-primary pull-left" onclick="batal()">Batal</button>
-            <button type="submit" class="btn btn-primary pull-right" name="pesan">Pesan & Bayar</button>
+            <button type="submit" class="btn btn-primary pull-right" name="pesan">Pesan</button>
           </div>
         </div>
       </div>

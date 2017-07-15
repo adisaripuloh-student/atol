@@ -1,4 +1,14 @@
 <h3 class="text-center">Daftar Pesanan</h3>
+<?php
+if (isset($_GET['msg']) == 'hapus-pesanan') {
+  echo '
+    <div class="alert alert-success alert-dismissible col-md-6 col-md-offset-3 text-center" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      Pesanan berhasil di batalkan.
+    </div>
+  ';
+}
+?>
 <hr>
 <table class="table table-striped table-bordered text-center table-responsive" id="table">
   <thead>
@@ -10,6 +20,7 @@
     <td>No. Kursi</td>
     <td>Kontak</td>
     <td>Pembayaran</td>
+    <td>Kode Konfirmasi</td>
     <td></td>
   </thead>
   <tbody>
@@ -32,7 +43,7 @@
       $key = $row['key_konfirmasi'];
 
       $j = 6;
-      for($i=1; $i<=12; $i++) {
+      for($i=1; $i<=13; $i++) {
         if(($jam_berangkat == $i)) {
           if($j <= 9) {
             $new_jadwal = '0' . $j . '.00';
@@ -71,10 +82,11 @@
         <td>'.$no_kursi.'</td>
         <td><a href="mailto:'.$kontak.'">'.$kontak.'</a></td>
         <td>'.$new_pembayaran.'</td>
+        <td>'.$key.'</td>
         <td>
           <div class="btn-group" role="group">
             <a href="?act=lihat&key='.$key.'"><button type="button" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-eye-open"></i></button></a>
-            <a href="#"><button type="button" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i></i></button></a>
+            <a href="?act=edit&key='.$key.'"><button type="button" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i></i></button></a>
           </div>
         </td>
       </tr>

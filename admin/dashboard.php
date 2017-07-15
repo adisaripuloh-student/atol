@@ -20,8 +20,8 @@
     <div class="container content">
       <div class="row">
         <?php
-          $act = $_GET['act'];
-          if (isset($act)) {
+          if (isset($_GET['act'])) {
+            $act = $_GET['act'];
             if(($act == 'lihat') && !empty($_GET['key'])) {
               $key = $_GET['key'];
               include ('halaman/lihat.php');
@@ -42,6 +42,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+    <script src="../js/tambahan.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('#table').DataTable();

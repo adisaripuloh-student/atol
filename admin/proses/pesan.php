@@ -39,7 +39,7 @@
     }
 
     $j = 6;
-    for($i=1; $i<=12; $i++) {
+    for($i=1; $i<=13; $i++) {
       if(($jam_berangkat == $i)) {
         if($j <= 9) {
           $new_jadwal = '0' . $j . '.00';
@@ -106,16 +106,16 @@
       $mail->Password = "Kmzwa87awaa";
 
       //Set who the message is to be sent from
-      $mail->setFrom('tugaskampusunikom@gmail.com', 'Kontak ATOL TRAVEL');
+      $mail->setFrom('tugaskampusunikom@gmail.com', 'ATOL TRAVEL');
 
       //Set an alternative reply-to address
-      $mail->addReplyTo('tugaskampusunikom@gmail.com', 'Kontak ATOL TRAVEL');
+      $mail->addReplyTo('tugaskampusunikom@gmail.com', 'ATOL TRAVEL');
 
       //Set who the message is to be sent to
       $mail->addAddress($kontak);
 
       //Set the subject line
-      $mail->Subject = 'KONFIRMASI PESANAN ATOL TRAVEL';
+      $mail->Subject = 'PEMBAYARAN PESANAN ATOL TRAVEL';
 
       $pesan =
       "
@@ -143,7 +143,11 @@
           <div class=\"header\">
             <h3>ATOL TRAVEL</h3>
           </div><br>
-          Untuk mengkonfirmasi pesanan dengan ID ".$id.": Klik <a href='".$domain."/konfirmasi.php?key=".$key_konfirmasi."'>disini<a><br><br>
+          Untuk melakukan pembayaran pesanan secara online silahkan transfer sebesar Rp. 20.000 terlebih dahulu ke rekening kami.<br><br>
+          <b>BNI</b><br>
+          Rekening bank: <b>3334444222</b><br>
+          Atas nama: <b>Atol Travel</b><br><br>
+          Jika sudah melakukan transfer silahkan upload bukti transfernya <a href='".$domain."/konfirmasi.php?key=".$key_konfirmasi."'>disini<a>.<br><br>Untuk membatalkan pesanan klik <a href='".$domain."/admin/proses/admin_konfirmasi.php?act=batal&key=".$key_konfirmasi."'>disini<a>.<br><br>
           <table>
           <tr>
             <td><b>Nama Lengkap</b><td>: ".$nama."</td></td>
@@ -157,16 +161,19 @@
           <tr>
             <td><b>No. Kursi</b><td>: <b>".$kursi."</b></td></td>
           </tr>
-          </table><br><br>
-            ATOL TRAVEL
-            </p>
+          </table>
+          <p>Untuk melakukan pembayaran langsung di kantor travel kami, berikan kode konfirmasi <b>".$key_konfirmasi."</b> kepada kasir.</b></p>
+            <h3>ATOL TRAVEL</h3>
+            <span><small>BANDUNG: Jalan Dipatiukur, Coblong, Lebakgede, Bandung, Kota Bandung, Jawa Barat 40132</small></span>
+            <br><span><small>JATINANGOR: UNPAD Jatinangor, Kota Kulon, Garut Kota, Kabupaten Garut, Jawa Barat 44112.</small></span>
             <center>
+            <br><br>
             <small>
             <p class=\"doff\">Allrights reserved &copy; ".date("Y")." ATOL TRAVEL.<br>
             <a href=\"".$domain."\" target=\"_blank\" style=\"text-decoration:none;\">Website Utama</a></p>
             </small>
             </center>
-          </div>
+        </div>
         </body>
         </html>
       ";
