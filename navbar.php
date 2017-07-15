@@ -9,14 +9,17 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        <a class="navbar-brand" href="/admin/dashboard.php">ATOL TRAVEL</a>
+        <?php if(isset($_SESSION['username']) != "admin"){ ?>
         <a class="navbar-brand" href="/">ATOL TRAVEL</a>
+        <?php } ?>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/jadwal_pemberangkatan.php">Jadwal Pemberangkatan</a></li>
           <?php if(isset($_SESSION['username']) != "admin"){ ?>
+          <li><a href="/jadwal_pemberangkatan.php">Jadwal Pemberangkatan</a></li>
           <li><a href="/kontak.php">Hubungi Kami</a></li>
           <?php } ?>
         </ul>
