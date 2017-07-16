@@ -9,9 +9,10 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/admin/dashboard.php">ATOL TRAVEL</a>
         <?php if(isset($_SESSION['username']) != "admin"){ ?>
         <a class="navbar-brand" href="/">ATOL TRAVEL</a>
+        <?php } else {?>
+        <a class="navbar-brand" href="/admin/dashboard.php">ATOL TRAVEL</a>
         <?php } ?>
       </div>
 

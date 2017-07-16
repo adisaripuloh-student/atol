@@ -1,5 +1,6 @@
 body {
-  background: #eaeaea;
+  background-color: #eaeaea;
+  background-image: url('../../images/bg.jpg');
 }
 
 .content{

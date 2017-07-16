@@ -9,19 +9,19 @@ if (isset($_GET['msg']) == 'hapus-pesanan') {
   ';
 }
 ?>
-<hr>
+<br>
 <table class="table table-striped table-bordered text-center table-responsive" id="table">
-  <thead>
-    <td>ID</td>
-    <td>Nama Pemesan</td>
-    <td>Dari</td>
-    <td>Ke</td>
-    <td>Keberangkatan</td>
-    <td>No. Kursi</td>
-    <td>Kontak</td>
-    <td>Pembayaran</td>
-    <td>Kode Konfirmasi</td>
-    <td></td>
+  <thead style="background-color: #ffffff;">
+    <th>ID</th>
+    <th>Nama Pemesan</th>
+    <th>Dari</th>
+    <th>Ke</th>
+    <th>Keberangkatan</th>
+    <th>No. Kursi</th>
+    <th>Kontak</th>
+    <th>Pembayaran</th>
+    <th>Kode Konfirmasi</th>
+    <th></th>
   </thead>
   <tbody>
   <?php

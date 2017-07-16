@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading" style="background-color: #784e98 !important; color: #ffffff !important;">
     <center><h3 class="panel-title">ATOL Travel</h3></center>
   </div>
   <div class="panel-body">

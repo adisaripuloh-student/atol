@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading" style="background-color: #784e98 !important; color: #ffffff !important;">
     <h3 class="panel-title text-center">Pesan Sekarang</h3>
   </div>
   <div class="panel-body">
